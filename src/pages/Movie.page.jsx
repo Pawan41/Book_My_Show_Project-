@@ -1,11 +1,12 @@
-
+import MovieHero from "../components/MovieHero/MovieHero.component";
 
 const Movie = () => {
   return (
     <>
-      hi
+      <MovieHero />
     </>
   );
 };
 
 export default Movie;
+
