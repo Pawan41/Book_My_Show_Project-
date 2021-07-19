@@ -49,7 +49,7 @@ const NavLg = () => {
                     <span className="text-gray-200 text-xs flex items-center cursor-pointer hover:text-white">
                         Dharamshala <BiChevronDown />
                     </span>
-                    <button className="bg-red-400 text-white px-2 py-1 text-sm rounded" > Sign in</button>
+                    <button className="bg-red-500 text-white px-2 py-1 text-sm rounded" > Sign in</button>
                     <div className="w-8 h-8 text-white">
                         <BiMenu className="w-full h-full" />
                     </div>
