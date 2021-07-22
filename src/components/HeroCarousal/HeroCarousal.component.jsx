@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HeroSlider from "react-slick";
+import axios from "axios";
 
 
 // Compoenent
 import { NextArrow, PrevArrow } from "./Arrow.component";
 
 const HeroCarousal = () => {
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+      const requestNowPlayingMovies = async () => {
+        const getImages = await axios.get("/movie/now_playing");
+        setImages(getImages.data.results);
+      };
+  
+      requestNowPlayingMovies();
+    }, []);
 
     const settingsLG = {
         arrows: true,
@@ -27,42 +38,37 @@ const HeroCarousal = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     };
-
-    const images = [
-        "https://images.unsplash.com/photo-1593642531955-b62e17bdaa9c?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80,",
-        "https://in.bmscdn.com/promotions/cms/creatives/1626343774760_admissionrageproductionsfestival_webshowcase_1280x500.jpg",
-        "https://images.unsplash.com/photo-1626074961596-cab914d9392e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=664&q=80",
-        "https://images.unsplash.com/photo-1626173078406-f83c07e45bc0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    ];
-
     return (
         <>
-            <div className="lg:hidden">
-                <HeroSlider {...settings}>
-                    {images.map((image) => (
-                        <div className="w-full h-56 md:h-80 py-3 px-1 ">
-                            <img src={image} alt="testing" className="w-full h-full" />
-                        </div>
-                    ))}
-                </HeroSlider>
-            </div>
-
-            <div className="hidden lg:block">
-                <HeroSlider {...settingsLG}>
-                    {images.map((image) => (
-                        <div className="w-full h-80 px-2 py-3">
-                            <img
-                                src={image}
-                                alt="testing"
-                                className="w-full h-full rounded-md"
-                            />
-                        </div>
-                    ))}
-                </HeroSlider>
-            </div>
+          <div className="lg:hidden">
+            <HeroSlider {...settings}>
+              {images.map((image) => (
+                <div className="w-full h-56 md:h-80 py-3 ">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
+                    alt="testing"
+                    className="w-full h-full"
+                  />
+                </div>
+              ))}
+            </HeroSlider>
+          </div>
+    
+          <div className="hidden lg:block">
+            <HeroSlider {...settingsLG}>
+              {images.map((image) => (
+                <div className="w-full h-96 px-2 py-3">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`}
+                    alt="testing"
+                    className="w-full h-full rounded-md"
+                  />
+                </div>
+              ))}
+            </HeroSlider>
+          </div>
         </>
-    );
-};
-
-export default HeroCarousal;
+      );
+    };
+    
+    export default HeroCarousal;

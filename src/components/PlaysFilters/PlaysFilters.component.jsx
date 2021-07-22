@@ -5,7 +5,7 @@ const PlaysFilter = (props) => {
         <Disclosure>
             {({ open }) => (
                 <>
-                    <Disclosure.Button className="py-2 flex items-center gap-3">
+                    <Disclosure.Button className="py-2 flex items-center gap-3 bg-gray-100 w-full  m-2 ">
                         {open ? <BiChevronUp /> : <BiChevronDown />}{" "}
                         <span className={open ? "text-red-600" : "text-gray-700"}>
                             {props.title}

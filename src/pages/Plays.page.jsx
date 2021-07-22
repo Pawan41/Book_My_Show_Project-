@@ -7,10 +7,11 @@ import PlaysFilter from "../components/PlaysFilters/PlaysFilters.component";
 const Plays = () => {
     return (
         <>
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 lg:mt-16 ">
                 <div className="w-full lg:flex lg:flex-row-reverse">
-                    <div className="lg:w-3/4">
+                    <div className="lg:w-3/4 ml-10">
                         <h2 className="text-2xl font-bold mb-4">Plays in Dharamshala</h2>
+                        <p  className="text-sm py-1 lg:w-16 pl-2 text-red-500 border-2 border-gray-300 rounded-full py-1 px-17 bg-gray-50 ">Theatre</p>
                         <div className="flex flex-wrap ">
                             <div className="w-1/2 md:w-1/3 lg:w-3/12 my-3">
                                 <Poster
@@ -77,6 +78,7 @@ const Plays = () => {
                                 tags={["Free", "0-501", "501-2000","Above 2000"]}
                             />
                         </div>
+                        <p  className="text-sm mt-4 lg:w-full p-2 text-red-500 border-2 border-red-300 rounded-md  text-sm text-center bg-gray-50">Browse by Venuse</p>
                     </div>
                 </div>
             </div>
