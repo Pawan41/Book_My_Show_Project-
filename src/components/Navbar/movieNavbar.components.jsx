@@ -47,7 +47,7 @@ const NavLg = () => {
         </div>
         <div className="flex items-center gap-3">
           <span className="text-gray-200 text-xs flex items-center cursor-pointer hover:text-white">
-            Bengaluru <BiChevronDown />
+            Dharamshala<BiChevronDown />
           </span>
           <button className="bg-red-500 text-white px-2 py-1 text-sm rounded">
             Sign in
